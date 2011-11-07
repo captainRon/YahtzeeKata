@@ -1,6 +1,4 @@
-package de.neuesausfreaktown.yatzeekata;
-
-import org.jetbrains.annotations.NotNull;
+package de.neuesausfreaktown.yahtzeekata;
 
 import java.util.Arrays;
 
@@ -9,7 +7,7 @@ public enum YahtzeeRank implements RankCalculator {
     YAHTZEE;
 
     @Override
-    public int calculateScore(@NotNull int... pips) {
+    public int calculateScore(int... pips) {
         //noinspection ConstantConditions
         assert pips != null && pips.length == 5;
 

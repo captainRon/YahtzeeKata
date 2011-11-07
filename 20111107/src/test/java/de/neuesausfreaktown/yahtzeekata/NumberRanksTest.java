@@ -1,4 +1,4 @@
-package de.neuesausfreaktown.yatzeekata;
+package de.neuesausfreaktown.yahtzeekata;
 
 import org.junit.Test;
 

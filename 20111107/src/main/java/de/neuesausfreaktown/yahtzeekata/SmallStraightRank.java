@@ -1,15 +1,13 @@
-package de.neuesausfreaktown.yatzeekata;
-
-import org.jetbrains.annotations.NotNull;
+package de.neuesausfreaktown.yahtzeekata;
 
 import java.util.Arrays;
 
 @SuppressWarnings("SuppressionAnnotation")
-public enum LargeStraightRank implements RankCalculator {
-    LARGESTRAIGHT;
+public enum SmallStraightRank implements RankCalculator {
+    SMALLSTRAIGHT;
 
     @Override
-    public int calculateScore(@NotNull int... pips) {
+    public int calculateScore(int... pips) {
         //noinspection ConstantConditions
         assert pips != null && pips.length == 5;
 

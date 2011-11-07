@@ -1,16 +1,13 @@
-package de.neuesausfreaktown.yatzeekata;
-
-import org.jetbrains.annotations.NotNull;
+package de.neuesausfreaktown.yahtzeekata;
 
 import java.util.Arrays;
 
 @SuppressWarnings("SuppressionAnnotation")
-public enum ThreeOfAKindRank implements RankCalculator {
-    THREEOFAKIND;
-    // , FOUROFAKIND, SMALLSTRAIGHT, LARGESTRAIGHT, FULLHOUSE, YAHTZEE, CHANCE;
+public enum LargeStraightRank implements RankCalculator {
+    LARGESTRAIGHT;
 
     @Override
-    public int calculateScore(@NotNull int... pips) {
+    public int calculateScore(int... pips) {
         //noinspection ConstantConditions
         assert pips != null && pips.length == 5;
 
