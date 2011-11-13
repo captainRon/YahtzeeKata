@@ -13,10 +13,10 @@ public enum FourOfAKindRank implements RankCalculator {
         Arrays.sort(pips);
         int result = 0;
         for (int i = pips.length - 1; i > 0; i--) {
-            if (isPair(i, pips)) {
+            if (isQuaduple(i, pips)) {
                 result += valueOfPair(i, pips);
                 //noinspection AssignmentToForLoopParameter
-                i -= 2;
+                i -= 3;
             }
         }
 
@@ -24,10 +24,19 @@ public enum FourOfAKindRank implements RankCalculator {
     }
 
     private static int valueOfPair(int i, int[] pips) {
-        return pips[i] + pips[i - 1];
+        int result = 0;
+        for (int j = i; j > i - 4; j--) {
+            result += pips[j];
+        }
+        return result;
     }
 
-    private static boolean isPair(int i, int[] pips) {
-        return pips[i] == pips[i-1];
+    private static boolean isQuaduple(int i, int[] pips) {
+        for (int j = i; j > i - 4; j--) {
+            if (pips[i] != pips[i - 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 }

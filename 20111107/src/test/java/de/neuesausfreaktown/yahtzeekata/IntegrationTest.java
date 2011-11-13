@@ -30,7 +30,7 @@ public class IntegrationTest {
 
     @Test
     public final void fourTwosOnFourOfAKindGives8() {
-        assertThat(ThreeOfAKindRank.THREEOFAKIND.calculateScore(2, 2, 2, 2, 5), is(8));
+        assertThat(FourOfAKindRank.FOUROFAKIND.calculateScore(2, 2, 2, 2, 5), is(8));
     }
 
     @Test
