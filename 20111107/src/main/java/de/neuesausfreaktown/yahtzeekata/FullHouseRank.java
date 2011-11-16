@@ -1,6 +1,12 @@
 package de.neuesausfreaktown.yahtzeekata;
 
+import de.neuesausfreaktown.yahtzeekata.util.PairTools;
+import de.neuesausfreaktown.yahtzeekata.util.TripleTools;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 @SuppressWarnings("SuppressionAnnotation")
 public enum FullHouseRank implements RankCalculator {
@@ -13,22 +19,29 @@ public enum FullHouseRank implements RankCalculator {
 
         Arrays.sort(pips);
         int result = 0;
-        for (int i = pips.length - 1; i > 1; i--) {
-            if (isTriple(i, pips)) {
-                result += valueOfTriple(i, pips);
+        int foundNumber = 0;
+        List<Integer> rest = new ArrayList<Integer>(2);
+        for (int i = pips.length - 1; i > 2; i--) {
+            if (TripleTools.isTriple(i, pips)) {
+                result += TripleTools.valueOfTriple(i, pips);
+                foundNumber = result / 3;
+                for (int pip : pips) {
+                    if (pip != foundNumber) {
+                        rest.add(pip);
+                    }
+                }
                 //noinspection AssignmentToForLoopParameter
                 i -= 2;
+                //noinspection BreakStatement
+                break;
             }
         }
-
-        return result;
-    }
-
-    private static int valueOfTriple(int i, int[] pips) {
-        return pips[i] + pips[i - 1] + pips[i - 2];
-    }
-
-    private static boolean isTriple(int i, int[] pips) {
-        return pips[i] == pips[i - 1] && pips[i] == pips[i - 2];
+        int retVal;
+        if (PairTools.isPair(0, rest))  {
+            retVal = 25;
+        } else {
+            retVal = 0;
+        }
+        return retVal;
     }
 }
