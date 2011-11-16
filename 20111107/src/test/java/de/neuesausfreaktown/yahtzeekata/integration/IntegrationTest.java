@@ -1,5 +1,6 @@
-package de.neuesausfreaktown.yahtzeekata;
+package de.neuesausfreaktown.yahtzeekata.integration;
 
+import de.neuesausfreaktown.yahtzeekata.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertThat;
