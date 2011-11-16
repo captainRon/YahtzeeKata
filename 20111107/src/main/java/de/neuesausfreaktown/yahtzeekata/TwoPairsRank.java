@@ -1,5 +1,7 @@
 package de.neuesausfreaktown.yahtzeekata;
 
+import de.neuesausfreaktown.yahtzeekata.util.PairTools;
+
 import java.util.Arrays;
 
 /**
@@ -18,21 +20,13 @@ public enum TwoPairsRank implements RankCalculator {
         Arrays.sort(pips);
         int result = 0;
         for (int i = pips.length - 1; i > 0; i--) {
-            if (isPair(i, pips)) {
-                result += valueOfPair(i, pips);
+            if (PairTools.isPair(i, pips)) {
+                result += PairTools.valueOfPair(i, pips);
                 //noinspection AssignmentToForLoopParameter
                 i--;
             }
         }
 
         return result;
-    }
-
-    private static int valueOfPair(int i, int[] pips) {
-        return pips[i] + pips[i - 1];
-    }
-
-    private static boolean isPair(int i, int[] pips) {
-        return pips[i] == pips[i-1];
     }
 }

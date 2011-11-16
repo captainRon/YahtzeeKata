@@ -1,5 +1,7 @@
 package de.neuesausfreaktown.yahtzeekata;
 
+import de.neuesausfreaktown.yahtzeekata.util.TripleTools;
+
 import java.util.Arrays;
 
 @SuppressWarnings("SuppressionAnnotation")
@@ -14,21 +16,13 @@ public enum ThreeOfAKindRank implements RankCalculator {
         Arrays.sort(pips);
         int result = 0;
         for (int i = pips.length - 1; i > 1; i--) {
-            if (isTriple(i, pips)) {
-                result += valueOfTriple(i, pips);
+            if (TripleTools.isTriple(i, pips)) {
+                result += TripleTools.valueOfTriple(i, pips);
                 //noinspection AssignmentToForLoopParameter
                 i -= 2;
             }
         }
 
         return result;
-    }
-
-    private static int valueOfTriple(int i, int[] pips) {
-        return pips[i] + pips[i - 1] + pips[i - 2];
-    }
-
-    private static boolean isTriple(int i, int[] pips) {
-        return pips[i] == pips[i - 1] && pips[i] == pips[i - 2];
     }
 }
